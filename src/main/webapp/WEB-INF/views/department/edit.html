@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/department/layout :: head"></head>
+<body>
+<h1>Edit department</h1>
+<p>
+    <a href="/departments">Department list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<div id="form">
+<form th:action="@{/edit-department}" th:object="${department}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table id="employees">
+        <tr>
+            <td>First name:</td>
+            <td><input type="text" th:field="*{departmentName}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Update department"></td>
+        </tr>
+    </table>
+</form>
+</div>
+<footer th:replace="/department/layout :: footer"></footer>
+</body>
+</html>

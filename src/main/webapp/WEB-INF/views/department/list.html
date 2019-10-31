@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/department/layout :: head"></head>
+<body>
+<a href="/create-department">Create new department</a><br>
+<a href="/employees">Back to employee list</a>
+<h1>Departments</h1>
+<table id="employees">
+    <tr>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="de:${department}">
+        <tr>
+            <td><a th:href="@{/view-department/__${de.id}__}" th:text="${de.departmentName}"></a> </td>
+            <td><a th:href="@{/edit-department/__${de.id}__ }">Edit</a></td>
+            <td><a th:href="@{/delete-department/__${de.id}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+<footer th:replace="/department/layout :: footer"></footer>
+</body>
+</html>
